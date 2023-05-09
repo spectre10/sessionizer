@@ -1,0 +1,12 @@
+#!/bin/sh
+
+RESULT=$(find /home/spectre \( -type f -o -type d \) -path */node_modules/* -prune -o -print | fzf)
+
+if [[ -d $RESULT ]]; then
+    cd $RESULT
+elif [[ -f $RESULT ]]; then
+    cd $(dirname "$RESULT")
+    n $RESULT
+else
+    echo "INVALID"
+fi
