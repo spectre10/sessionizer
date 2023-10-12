@@ -1,6 +1,7 @@
 #!/bin/sh
 
-RESULT=$(find /home/spectre \( -type f -o -type d \) -path */node_modules/* -prune -o -print | fzf)
+# RESULT=$(find /home/spectre \( -type f -o -type d \) -path */node_modules/* -prune -o -print | fzf)
+RESULT=$(plocate / | fzf)
 
 if [[ -d $RESULT ]]; then
     cd $RESULT
